@@ -1,0 +1,245 @@
+
+{% assign has_header_mast = false %}
+
+  {% include 'html-sub_nav' %}
+
+
+
+  
+  <form action="/cart" method="post">  
+  <div id="cart-container">
+     <div class="row">
+      <div class="small-12 columns">
+         <img src="{{ 'cart-ico.png' | asset_url }}" alt="">
+         <h1>Your Cart</h1>
+      </div>
+     </div>
+    
+     
+     {% if cart.item_count > 0 %}
+     <div id="cart-results">
+        <div class="row">
+           <table>
+             <caption class="outscreen">Your Cart</caption>
+              <thead>
+                <tr>
+                  <th scope="col">X</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Item</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price (per)</th>
+                  <th scope="col">Total Price</th>
+                </tr>
+              </thead>
+              <tfoot>
+                  <tr>
+                     <td class="blank"></td>
+                     <td class="blank"></td>
+                     <td class="blank"></td>
+                     <td class="mobile_checkout"><input type="submit" id="checkout_mobile" class="checkout" name="checkout" value="Checkout" /></td>
+                     <td>Subtotal</td>
+                     <td class="cart-total">{{ cart.total_price | money }}</td>
+                  </tr>
+              </tfoot>
+              <tbody>
+
+      			{% for item in cart.items %}  
+                {% assign collection_url = item.product.collections.last.url %}
+                {% if collection_url == '/collections/frontpage' or collection_url == blank %}
+                  {% assign collection_url = '/collections/all' %}
+                {% endif %}
+
+                {% if forloop.first %}
+                  {% assign continue_shopping_url = collection_url %}
+                {% endif %}
+
+                <tr>
+                  <td>
+                    <div aria-label="delete" aria-describedby="delete {{ item.title | escape }}" class="delete__items" rel="button" rol="button" aria-label="delete" aria-describedby="Delete {{ item.title | escape }}">
+                      <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="item-remove" title="Delete {{ item.title | escape }}" rol="link" rel="link" aria-label="delete" aria-describedby="Delete {{ item.title | escape }}">X</a></div></td>
+                  <td>
+                  	<a href="{{ collection_url }}{{ item.url }}">
+                     <img src="{{ item | img_url: 'compact' }}" class="cart_thumb"  alt="{{ item.title | escape }}" />
+                    </a>
+                  </td>
+                  <td><div class="hclass4">{{ item.variant.title }} {{ item.grams | weight_with_unit }}</div>
+                    {% render 'paywhirl-subscriptions-cart-selling-plans', item: item %}
+                    <p>{{ item.product.type }}</p>
+                  </td>
+                  <td class="td_item_price">
+                    <label for="drop_{{ forloop.index }}" style="display:none;">Select quantity</label>
+                    <select id="drop_{{ forloop.index }}" class="f-dropdown_1" name="dropdown" role="combobox" data-dropdown-content>
+                      <option selected value="{{item.quantity}}" data-cart-add="{{ item.id }}" class="cart_option"><a>{{item.quantity}}</a></option>
+                      <option value="1" data-cart-add="{{ item.id }}" class="cart_option"><a>1</a></option>
+                       <option value="2" data-cart-add="{{ item.id }}" class="cart_option"><a>2</a></option>
+                       <option value="3" data-cart-add="{{ item.id }}" class="cart_option"><a>3</a></option>
+                       <option value="4" data-cart-add="{{ item.id }}" class="cart_option"><a>4</a></option>
+                       <option value="5" data-cart-add="{{ item.id }}" class="cart_option"><a>5</a></option>
+                       <option value="6" data-cart-add="{{ item.id }}" class="cart_option"><a>6</a></option>
+                       <option value="7" data-cart-add="{{ item.id }}" class="cart_option"><a>7</a></option>
+                       <option value="8" data-cart-add="{{ item.id }}" class="cart_option"><a>8</a></option>
+                       <option value="9" data-cart-add="{{ item.id }}" class="cart_option"><a>9</a></option>
+                       <option value="10" data-cart-add="{{ item.id }}" class="cart_option"><a>10</a></option>
+                       <option value="11" data-cart-add="{{ item.id }}" class="cart_option"><a>11</a></option>
+                       <option value="12" data-cart-add="{{ item.id }}" class="cart_option"><a>12</a></option>
+                       <option value="13" data-cart-add="{{ item.id }}" class="cart_option"><a>13</a></option>
+                       <option value="14" data-cart-add="{{ item.id }}" class="cart_option"><a>14</a></option>
+                       <option value="15" data-cart-add="{{ item.id }}" class="cart_option"><a>15</a></option>
+                       <option value="50" data-cart-add="{{ item.id }}" class="cart_option"><a>50</a></option>
+                    </select>
+                    
+                    <input type="input" name="updates[]" id="updates_{{ item.id }}" class="cart_quantity quantity_{{ item.id }}" value="{{ item.quantity }}" />
+                    {% comment %}
+                    <a href="#" data-options="align:bottom" data-dropdown="drop_{{ forloop.index }}" class="button"> <span class="quantity_txt_{{ item.id }}">{{ item.quantity }} </span> <i class="fa fa-caret-down"></i></a>
+                     <ul id="drop_{{ forloop.index }}" class="f-dropdown" data-dropdown-content>
+                       <li data-amount="1" data-cart-add="{{ item.id }}" class="cart_option"><a>1</a></li>
+                       <li data-amount="2" data-cart-add="{{ item.id }}" class="cart_option"><a>2</a></li>
+                       <li data-amount="3" data-cart-add="{{ item.id }}" class="cart_option"><a>3</a></li>
+                       <li data-amount="4" data-cart-add="{{ item.id }}" class="cart_option"><a>4</a></li>
+                       <li data-amount="5" data-cart-add="{{ item.id }}" class="cart_option"><a>5</a></li>
+                       <li data-amount="6" data-cart-add="{{ item.id }}" class="cart_option"><a>6</a></li>
+                       <li data-amount="7" data-cart-add="{{ item.id }}" class="cart_option"><a>7</a></li>
+                       <li data-amount="8" data-cart-add="{{ item.id }}" class="cart_option"><a>8</a></li>
+                       <li data-amount="9" data-cart-add="{{ item.id }}" class="cart_option"><a>9</a></li>
+                       <li data-amount="10" data-cart-add="{{ item.id }}" class="cart_option"><a>10</a></li>
+                       <li data-amount="11" data-cart-add="{{ item.id }}" class="cart_option"><a>11</a></li>
+                       <li data-amount="12" data-cart-add="{{ item.id }}" class="cart_option"><a>12</a></li>
+                       <li data-amount="13" data-cart-add="{{ item.id }}" class="cart_option"><a>13</a></li>
+                       <li data-amount="14" data-cart-add="{{ item.id }}" class="cart_option"><a>14</a></li>
+                       <li data-amount="15" data-cart-add="{{ item.id }}" class="cart_option"><a>15</a></li>
+                       <li data-amount="50" data-cart-add="{{ item.id }}" class="cart_option"><a>50</a></li>
+                     </ul>
+                    {% endcomment %}
+                  </td>
+                  <td class="unit_price"><div class="hclass4">{{ item.price | money }}</div></td>
+                  <td><div class="hclass4"><strong data-cart-render="total_price_money_with_currency"></strong> {{ item.line_price | money }}</div></td>
+                </tr>
+                
+                {% endfor %}
+              </tbody>
+            </table>
+            <hr class="double">
+        </div>
+        <div class="row bottom_cart_buttons">
+           <div class="small-12 medium-4 large-3 columns">
+              <a href="/pages/the-goods" class="cont-shop">Continue Shopping</a>
+           </div>
+           <div class="small-12 small-offset-0 medium-4 medium-offset-4 large-3 large-offset-6 columns">
+              <input type="submit" id="checkout" class="checkout" name="checkout" value="Checkout" />
+			  {% if additional_checkout_buttons %}
+			    <p class="additional-checkout-buttons">
+			      {{ content_for_additional_checkout_buttons }}
+			    </p>
+    		  {% endif %}
+           </div>
+        </div>
+     </div>
+    {% else %}
+    <div id="no_cart" class="row">
+      <p class="hclass1">It appears that your cart is currently empty!</p>
+      <span class="delta">You can continue browsing <a href="/pages/the-goods">here</a>.</span>
+    </div>
+	{% endif %}
+  </div>
+    
+  <div id="ft-cta" class="cart">
+      <div class="row">
+        <div class="small-10 medium-8  small-centered columns">
+           <div class="vac">
+              <div class="va">
+                 <h2 class="hclass2">Are you a retailer or distributor?</h2>
+                 <h3 class="hclass3">Connect with us and we can let you know how to best go about getting information on our products for your business.</h3>
+                 <a href="/pages/contact-us/?id=2">FIND OUT HOW</a>
+              </div>
+           </div>
+        </div>
+      </div>
+   </div>
+   <input type="submit" name="update" value="Update cart" id="update_cart" />
+</form>
+
+<style>
+  .hclass1
+  {
+      font-family: "DINWebBlack", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	  font-size: 1.5rem;
+      text-transform: uppercase;
+      line-height: 1.4;
+      font-weight: normal;
+      font-style: normal;
+      color: #222222;
+      text-rendering: optimizeLegibility;
+      margin-top: 0.2rem;
+      margin-bottom: 0.5rem;
+  }
+  .hclass2
+  {
+  	text-align: center;
+  	color: #fff;
+ 	line-height: 1;
+    font-size: 3rem;
+    font-family: "DINWebBlack", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	margin-top: 0.2rem;
+	margin-bottom: 0.5rem;
+}
+  .hclass3
+  {
+  	text-align: center;
+  	color: #fff;
+ 	line-height: 1;
+    font-size: 1.5rem;
+    font-family: "DINWebBlack", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
+	font-style: normal;
+	text-rendering: optimizeLegibility;
+	margin-top: 0.2rem;
+	margin-bottom: 0.5rem;
+	}
+  .hclass4
+  {
+  	font-weight: normal;
+	font-style: normal;
+	color: #222222;
+	text-rendering: optimizeLegibility;
+	margin-top: 0.2rem;
+    line-height: 1.4;
+    font-size: 1.125rem;
+    font-family: "DINWebMedium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-decoration:none;
+	}
+  .delta a
+  {
+    text-decoration:underline;
+    color:#00769d;
+    background-color:#f5f0ea;
+  }
+  select.f-dropdown_1 {
+    -webkit-appearance: auto !important;
+    -moz-appearance: initial !important;
+}
+  button.delete__items {
+    background: transparent;
+    border: none;
+}
+  #cart-container h5 {text-transform:none;}
+  #cart-container img {max-width:40px;}
+  .td_item_price {position:relative;}
+ #update_cart, .cart_quantity {display:none;}
+  #no_cart {text-align:center;}
+  .checkout {border:none;font-family: DINWebBlack, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal;line-height: 24px; padding: 10px;}
+</style>
+<script>
+  $(document).ready(function(){
+    $('.f-dropdown_1').change(function(){
+    var valquant= $(this).val();
+//       alert(valquant);
+      $(this).next().attr('value',valquant);
+      $('#update_cart').trigger('click');
+    });
+  });
+</script>

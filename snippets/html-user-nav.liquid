@@ -1,0 +1,22 @@
+
+{% if page.handle != 'timeline' %}
+<div class="clearfix"></div>
+  <div id="cart-subnav">
+     <div class="row">
+        <div class="small-12 columns small-centered">
+           <div class="vac">
+              <div class="va">
+                  <p>
+                    {% if customer %}<a href="/account/orders" {% if template == '' %}class="active"{% endif %}>Orders</a> -   
+                    <a href="/account/addresses">Addresses</a> -{% endif %}
+                    <a href="{{ shop.url }}">Return to Store</a> -   
+                    <a href="/pages/contact-us"> Contact Us</a>   
+                    {% if customer %}- <a href="/account/logout"> Logout</a> {% endif %}
+                </p>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>  
+{% endif %}
+<hr class="double">

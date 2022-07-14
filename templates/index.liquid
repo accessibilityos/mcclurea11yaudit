@@ -1,0 +1,132 @@
+<!-- Masthead -->
+  <div id="masthead" class="home">  
+    <div class="vac ">
+       <div class="va">
+         
+         <video  poster="{{ 'home-hero_bg.jpg' | asset_url }}" id="bgvid" controls loop muted autoplay>
+            <source src="{{ 'MCP_Final-nosound.webm' | asset_url }}" type="video/webm">
+            <source src="{{ 'MCP_Final.ogv' | asset_url }}" type="video/ogg">
+         	<source src="{{ 'MCP_Final-nosound.m4v' | asset_url }}" type="video/mp4">
+         </video>
+         <div class="video-controls" style="display:none;">
+           <button type="button" class="play-pause-btn play">Play</button>
+         </div>
+         <img src="{{ 'home-hero_logo.png' | asset_url }}" alt="DETROIT, MCCLURE'S PICKLES">
+       </div>
+    </div>
+  </div>
+  
+  <!-- CTA -->
+  <div id="cta-container">
+     <div id="goods">
+        <div class="vac">
+        	<div class="va">
+              <a href="/pages/the-goods" aria-label="Browse The Goods"><img src="{{ 'home-goods_sign.png' | asset_url }}" alt="The Goods"></a>
+        	</div>
+        </div>  
+     </div>
+    
+     <div id="story">
+      <div class="vac">
+        	<div class="va">
+              <a href="/pages/culture" aria-label="This Is Our Story"><img src="{{ 'home-story_sign.png' | asset_url }}" alt="Culture"></a>
+        	</div>
+        </div>
+     </div>
+    <div id="onejar">
+      <div class="vac">
+        	<div class="va">
+              <a href="/products/chips" target="_blank" aria-label="Pickle Flavoured Potato Chips"><img src="{{ 'potato-chips-new.png' | asset_url }}" alt="Lil Pickle Packs"></a>
+        	</div>
+        </div>
+     </div>
+  </div>
+<!-- /products/pickles?variant=12866843803751 -->
+
+{% unless settings.homepage_page == blank or pages[settings.homepage_page].empty? %}
+{% assign page = pages[settings.homepage_page] %}
+<div class="rte grid-margins">
+  {{ page.content }}
+</div>
+{% endunless %}
+
+<style>
+@media only screen and (min-width: 64.063em) {
+  #masthead.home video { 
+    position: absolute;
+    top:0px;
+    left:-5%;
+    min-width: 105%;
+    min-height: 100%;
+    width: 100%;
+    height: auto;
+    z-index: -100;
+    background: url('{{ 'home-hero_bg.jpg' | asset_url }}') no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
+  }
+}
+ 
+@media only screen and (max-width: 64.063em) {
+  #masthead.home video {display:none;}
+  #masthead.home .vac {
+      background: url('{{ 'home-hero_bg.jpg' | asset_url }}') center no-repeat;
+        background-size:cover;
+  }
+  #cta-container #goods {border-bottom: 0.3125rem solid #f5efe9;}
+}
+  
+
+</style>
+<script>
+  $(document).ready(function (){
+    var vid = document.getElementById("bgvid");
+
+    function playVid() {
+      vid.play();
+    }
+
+    function pauseVid() {
+      vid.pause();
+    }
+
+    $('.play-pause-btn').on('click', function(){
+      
+      if($(this).hasClass('play')){
+        pauseVid();
+        $(this).text('play');
+      }
+      if($(this).hasClass('pause')){
+        playVid();
+        $(this).text('pause');
+      }
+      $(this).toggleClass('play pause');
+    });
+    
+    
+    //playVid();
+  });
+</script>
+<!--
+<div id="onejar-modal" class="hidden">
+  <div class="inner">
+    <a href="https://mcclures.com/pages/contest" target="_blank"><img class="desktop" alt="Win Tootsie Tickets!" src="{{ 'tootsie-popup.png' | asset_url }}"><img
+        class="mobile" src="{{ 'tootsie-popup.png' | asset_url }}"></a>
+    <div id="modal-close">X</div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+
+  setTimeout(function() {
+    $('#onejar-modal').removeClass('hidden').addClass('visible');
+  }, 2000);
+
+  $("#modal-close").on( "click", function() {
+    setTimeout(function() {
+      $('#onejar-modal').removeClass('visible').addClass('hidden');
+    }, 200);
+  });
+});
+</script>
+-->

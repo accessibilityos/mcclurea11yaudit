@@ -1,0 +1,300 @@
+{% comment %}
+** Reminders - Delete this on trasfer **
+
+- Update "addthis" account to pull clients account.
+- Update Wufoo account to pull from clients account
+- Update meta OG image to correct size.
+- Break up product page once logic is in place
+
+{% endcomment %}
+
+
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js {{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}"> <!--<![endif]-->  
+<head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5G6QVTF');</script>
+<!-- End Google Tag Manager -->
+  
+  <script src='//load.sumome.com/' data-sumo-site-id='c590a3ba0116312de4b6dc1008ba25bd0ff2c3def171e0cc3e01cfd506f13166' data-shopify async='async'></script>
+  <meta charset="utf-8" />
+  
+  <meta name="p:domain_verify" content="c83ee9a3f342c3570ba163ebd973ab9d"/>
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
+
+  <title>
+  {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}" />
+  {% endif %}
+
+  <link rel="canonical" href="{{ canonical_url }}" hreflang="en" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--   <meta name="viewport" content="width=1280, initial-scale=1"> -->
+  
+  {{ content_for_header }}
+
+  {{ 'app.css' | asset_url | stylesheet_tag }}
+  {{ 'app-temp.css' | asset_url | stylesheet_tag }}
+  {{ 'woform_styles.css' | asset_url | stylesheet_tag }}
+  {{ 'wufoo-bottom-poll.css' | asset_url | stylesheet_tag }}
+  {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
+  {{ 'costume_style.css' | asset_url | stylesheet_tag }}
+  
+  
+  {{ 'modernizr.js'  | asset_url | script_tag }}
+  {{ 'jquery.min.js'  | asset_url | script_tag }}
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  {{ 'hint.css' | asset_url | stylesheet_tag }}
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
+  {{ 'animate.css'  | asset_url | stylesheet_tag }}
+  
+  
+  {% if template contains 'customers' %}
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% endif %}
+  
+  {% if template contains 'product' %}
+    <meta property="og:url" content="{{ shop.url }}{{ product.url }}" />
+    <meta property="og:title" content="{{ shop.name }} - {{ product.title }}" />
+    <meta property="og:description" content="{{ product.description | strip_html | truncatewords: 100, '' | escape  }}" />
+
+  {% elsif template contains 'article' %}
+    <meta property="og:url" content="{{ shop.url }}{{ article.url }}" />
+    <meta property="og:title" content="{{ article.title }}" />
+    <meta property="og:description" content="{{ article.excerpt_or_content | strip_html | truncatewords: 100, '' | escape  }}" />
+  {% endif %}
+
+  {% if template contains 'product' %}
+    <meta property="og:image" content="http:{{ product.featured_image.src | product_img_url: 'grande' }}" />
+    <meta property="og:image:secure_url" content="https:{{ product.featured_image.src | product_img_url: 'grande' }}" />
+  {% elsif template contains 'article' %}
+    {% assign img_tag = '<' | append: 'img' %}
+    {% if article.content contains img_tag %}
+      {% assign src = article.content | split: 'src="' %}
+      {% assign src = src[1] | split: '"' | first | remove: 'https:' | remove: 'http:' %}
+      {% if src %}
+        <meta property="og:image" content="http:{{ src }}" />
+        <meta property="og:image:secure_url" content="https:{{ src }}" />
+      {% endif %}
+    {% endif %}
+  {% else %}
+    {% if settings.use_logo %}
+      <meta property="og:image" content="http:{{ 'logo.png' | asset_url }}" />
+      <meta property="og:image:secure_url" content="https:{{ 'logo.png' | asset_url }}" />
+    {% endif %}
+  {% endif %}
+  
+  <script type="text/javascript">var switchTo5x=true;</script>
+  <!--<script type="text/javascript" src="https://w.sharethis.com/button/buttons.js"></script>-->
+<!--   <script type="text/javascript">stLight.options({publisher: "3cc4cb03-1da8-4d9a-8ff3-39b346d86a25", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script> -->
+  {{ 'dcsns_wall.css' | asset_url | stylesheet_tag }}
+  {% comment %}
+  {{ 'https://s153238.gridserver.com//mcclures-social/jquery.social.stream.1.5.17.js' | script_tag }}
+  {{ 'https://s153238.gridserver.com//mcclures-social/jquery.social.stream.wall.1.6.js' | script_tag }}
+  
+  <!--script type="text/javascript">
+		jQuery(document).ready(function($){
+          $('#social-stream').dcSocialStream({
+              feeds: {
+                  twitter: {
+                      url: 'https://s153238.gridserver.com/mcclures-social/twitter.php',
+                      id: 'mcclurespickles',
+                      thumb: false,
+                      intro: 'posted',
+                      out: 'text',
+                      icon: 'https://s153238.gridserver.com//mcclures-social/twitter.png'
+                  },
+                  rss: {
+                      id: "http://feeds.feedburner.com/shakerdev/tCMQ",
+                      url: 'https://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/rss.php',
+                      icon: 'https://s153238.gridserver.com//mcclures-social/twitter.png'
+                  },
+                  facebook: {
+                      id: '126565220757156',
+                      url: 'https://s153238.gridserver.com//mcclures-social/facebook.php',
+                      icon: 'https://s153238.gridserver.com//mcclures-social/facebook.png'
+                  },
+                  instagram: {
+                      id: '!359113322',
+                      accessToken: '359113322.34139cf.19830e626adc4100b6711b42142a99d9',
+                      redirectUrl: 'https://www.mcclures-pickles.myshopify.com/pages/social',
+                      clientId: '34139cf65e864d6e837b0132ad0eb3de ',
+                      out: 'intro,thumb,text,user',
+                      icon: 'https://s153238.gridserver.com//mcclures-social/instagram.png'
+                  }
+              },
+              rotate: {
+                  delay: 0
+              },
+              twitterId: 'mcclurespickles',
+              control: false,
+              filter: true,
+              wall: true,
+            limit: 20,
+              order: 'random',
+              max: 'limit',
+              iconPath: '',
+              imagePath: ''
+          });
+
+      });
+  </script -->
+  {% endcomment %}
+  {% comment %}
+  <script>
+	$( document ).ready(function() {
+      $(".stream").css({ opacity: 0 });
+      setTimeout( function() {
+        window.scrollTo(0, 0);
+	    $(".f-rss a").trigger("click");	
+        window.scrollTo(0, 0);
+      }, 3000);
+      
+      setTimeout( function() {
+        window.scrollTo(0, 0);
+        $(".stream .dcsns-toolbar li:first-child a").trigger("click");
+        window.scrollTo(0, 0);
+        $(".stream").css({ opacity: 1 });
+        $("#loading").fadeOut();
+        window.scrollTo(0, 0);
+  		}, 4000);
+       
+       
+    });
+  </script>
+  {% endcomment %}
+</head>
+
+ <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+
+   <!-- Google Tag Manager (noscript) -->
+<!--noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5G6QVTF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript -->
+<!-- End Google Tag Manager (noscript) -->
+   
+   
+	
+  {% include 'html-header' %}
+  <!--<div class="">-->
+   <main>
+  {{ content_for_layout }}
+   </main>
+  {% include 'html-footer' %}
+   
+  
+   {{ 'product_shop.js' | asset_url | script_tag }}
+  
+  {{ 'foundation.min.js'  | asset_url | script_tag }}
+  {{ 'app.js'  | asset_url | script_tag }}
+  {{ 'light_slider.js'  | asset_url | script_tag }}
+  {{ 'fittext.js'  | asset_url | script_tag }}
+  {{ 'jquery.sticky.js'  | asset_url | script_tag }}
+  {% include 'html-sleeper_scripts' %}
+  
+<style>
+  .search_filters, .search_filter { 
+    color: #FE3C37 !important;
+   }
+  .addresses li a{
+    color:#0074A7;
+  }
+  .recaptcha-checkbox-border{
+    border:2px solid #806F6F !important;
+  }
+  .cc-animate.cc-revoke.cc-bottom, .cc-animate.cc-revoke.cc-popup, .cc-animate.cc-revoke.cc-overlay {
+    -webkit-transform: translateY(0);
+    transform: translateY(0em);
+}
+  .cc-window.cc-invisible{
+  display:none;
+  }
+  .hidden__skip_text{
+  position: absolute!important;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+  #cart-subnav a.active_tabs {
+    color: #e25b41;
+  }
+  @media (max-width: 640px) {
+  header #hd-nav-acc ul{
+  font-size:10px;
+  }
+  }
+</style>
+ {% include 'social-login' %}{% render 'paywhirl-main' %}
+   {% comment %}
+ <script>(function(){ var s = document.createElement('script'), e = ! document.body ? document.querySelector('head') : document.body; s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; s.async = true; s.onload = function(){ acsbJS.init({ statementLink : '', footerHtml : '', hideMobile : false, hideTrigger : false, language : 'en', position : 'left', leadColor : '#222121', triggerColor : '#222121', triggerRadius : '50%', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerIcon : 'people', triggerSize : 'medium', triggerOffsetX : 20, triggerOffsetY : 20, mobile : { triggerSize : 'small', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerOffsetX : 10, triggerOffsetY : 10, triggerRadius : '50%' } }); }; e.appendChild(s);}());</script>
+   
+   {{ 'https://s153238.gridserver.com//mcclures-social/jquery.social.stream.1.5.17.js' | script_tag }}
+  {{ 'https://s153238.gridserver.com//mcclures-social/jquery.social.stream.wall.1.6.js' | script_tag }}
+  
+  <script type="text/javascript">
+		jQuery(document).ready(function($){
+          $('#social-stream').dcSocialStream({
+              feeds: {
+                  twitter: {
+                      url: 'https://s153238.gridserver.com/mcclures-social/twitter.php',
+                      id: 'mcclurespickles',
+                      thumb: false,
+                      intro: 'posted',
+                      out: 'text',
+                      icon: 'https://s153238.gridserver.com//mcclures-social/twitter.png'
+                  },
+                  rss: {
+                      id: "http://feeds.feedburner.com/shakerdev/tCMQ",
+                      url: 'https://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/rss.php',
+                      icon: 'https://s153238.gridserver.com//mcclures-social/twitter.png'
+                  },
+                  facebook: {
+                      id: '126565220757156',
+                      url: 'https://s153238.gridserver.com//mcclures-social/facebook.php',
+                      icon: 'https://s153238.gridserver.com//mcclures-social/facebook.png'
+                  },
+                  instagram: {
+                      id: '!359113322',
+                      accessToken: '359113322.34139cf.19830e626adc4100b6711b42142a99d9',
+                      redirectUrl: 'https://www.mcclures-pickles.myshopify.com/pages/social',
+                      clientId: '34139cf65e864d6e837b0132ad0eb3de ',
+                      out: 'intro,thumb,text,user',
+                      icon: 'https://s153238.gridserver.com//mcclures-social/instagram.png'
+                  }
+              },
+              rotate: {
+                  delay: 0
+              },
+              twitterId: 'mcclurespickles',
+              control: false,
+              filter: true,
+              wall: true,
+            limit: 20,
+              order: 'random',
+              max: 'limit',
+              iconPath: '',
+              imagePath: ''
+          });
+
+      });
+  </script>
+    {% endcomment %}
+</body>
+</html>

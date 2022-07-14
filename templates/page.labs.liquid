@@ -1,0 +1,419 @@
+{% comment %}
+** Dev note: 
+- To edit video slider go to theme setting and update there
+- This page has a model which is can be found at the bottom of this page
+- Polls are coming from wufoo / to update replace share code and make sure the poll is using the right theme
+- To edit theme poll, open woform_style.css and update CND version in wufoo themes page under advance 
+{% endcomment %}
+
+<style>
+  #lab--poll {
+        padding-top: 60px;
+  }
+  
+      #showondesktop {display: block;}
+    #showonmobile {display: none;}
+
+    @media screen and (max-width: 768px) {
+
+     #showondesktop {display: none;}
+    #showonmobile {display: block;}
+
+    }
+  
+</style>
+<!-- Masthead -->
+<div id="masthead" class="lab">  
+  <div class="vac ">
+    <div class="va">
+      <img src="{{ 'lab.png' | asset_url }}" alt="The Lab"><hr />
+      <div style="max-width: 99%;" id="showondesktop">
+        <center>
+          <h1 class="smal_title" style="color: white;">Watch Epicurious challenge Bob McClure to guess which one of two pickles is more expensive</h1>
+          <!--<iframe aria-describedby="Lab video" aria-labelledby="masthead lab video showondesktop" aria-label="Pickle Expert Guesses Cheap vs Expensive Pickles | Price Points | Epicurious" title="Pickle Expert Guesses Cheap vs Expensive Pickles | Price Points | Epicurious" roll="video" width="720" height="405" src="https://www.youtube.com/embed/LBMhHbkXcuU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+          <iframe aria-label="Pickle Expert Guesses Cheap vs Expensive Pickles | Price Points | Epicurious" title="Pickle Expert Guesses Cheap vs Expensive Pickles | Price Points | Epicurious" roll="video" width="720" height="405" src="https://www.youtube.com/embed/LBMhHbkXcuU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <!-- <iframe width="320" height="180" src="https://www.youtube.com/embed/LBMhHbkXcuU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center></div> -->
+        </center>
+      </div>
+      <div style="max-width: 96%;" id="showonmobile"><center><h5 style="color: white;">Watch Epicurious challenge Bob McClure to guess which one of two pickles is more expensive</h5>
+
+        <iframe aria-labelledby="masthead showondesktop" aria-label="Pickle Expert Guesses Cheap vs Expensive Pickles | Price Points | Epicurious" title="Pickle Expert Guesses Cheap vs Expensive Pickles | Price Points | Epicurious" width="320" height="180" src="https://www.youtube.com/embed/LBMhHbkXcuU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center></div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+
+
+  <div id="lab--videos">
+    
+    
+    <!--div class="video-right">
+      video-right
+      <div id="video-menu">
+        
+        {% comment %}<h4 class="sm-lab--subtitle"></h4>{% endcomment %}
+        <h1 class="sm-lab--title">videos</h1>
+      </div>
+
+      <ul class="videos" role="tablist" aria-label="Videos">
+        {% unless settings.video_1_url == blank %}
+        <a href="https://youtu.be/6WjqNmZ7zDk" target="_blank"><li class="goto_slide" data-slide_num="1" role="tab" aria-selected="true" aria-controls="food_network-tab" id="the_food_network">{{ settings.video_1_title }}</li></a>
+        {% endunless %}
+        {% unless settings.video_2_url == blank %}
+        <a href="https://youtu.be/18wnbQ81X2Y" target="_blank"><li class="goto_slide" data-slide_num="2" role="tab" aria-selected="false" aria-controls="msnbc-live-tab" id="msnbc-live">{{ settings.video_2_title }}</li></a>
+        {% endunless %}
+        {% unless settings.video_3_url == blank %}
+        <a href="https://youtu.be/kjqbQWlWa74" target="_blank"><li class="goto_slide" data-slide_num="3" role="tab" aria-selected="false" aria-controls="morning-joe-tab" id="morning-joe">{{ settings.video_3_title }}</li></a>
+        {% endunless %}
+        {% unless settings.video_4_url == blank %}
+        <a href="https://youtu.be/u5jIGVKIcmk" target="_blank"><li class="goto_slide" data-slide_num="4" role="tab" aria-selected="false" aria-controls="martha-stewart-show-tab" id="martha-stewart-show">{{ settings.video_4_title }}</li></a>
+        {% endunless %}
+        {% unless settings.video_5_url == blank %}
+        <a href="https://youtu.be/wsqhXAR2-yo" target="_blank"><li class="goto_slide" data-slide_num="5" role="tab" aria-selected="false" aria-controls="food-channel-tab" id="food-channel">{{ settings.video_5_title }}</li></a>
+        {% endunless %}
+      </ul>
+      
+      <!-- /.videos 
+
+      <a href="https://www.youtube.com/channel/UCcfiSDmzC1fQElqjEFKWSBA" class="visit-youtube" target="_blank">visit us on youtube <i class="icon-filled-arrow-right"></i></a>
+    </div -->
+    <!-- /.video-right -->
+    
+    
+    
+    <div class="video-left">
+      
+      <h2>VIDEOS</h2>
+	  <ul id="lightSlider" >
+        
+        {% unless settings.video_1_url == blank and settings.video_1_url_youtube == blank %}
+      	<!--<li role="tabpanel" id="food_network-tab" aria-labelledby="the_food_network">-->
+        <li role="tabpanel" id="food_network-tab">
+          {% if settings.video_1_url_youtube != blank %}
+          <div class="video">
+          	<iframe width="100%" height="375" src="https://www.youtube.com/embed/{{settings.video_1_url_youtube}}" aria-labelledby="masthead lab video showondesktop"
+                    aria-label="{{settings.video_1_title}}"
+                    title="{{settings.video_1_title}}" role="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+          </iframe>
+          </div>
+          {% else %}
+          {% if settings.video_1_url != blank %}
+          <div class="video">
+          	{{ settings.video_1_url }}
+          </div>
+          {% endif %}
+          {% endif %}
+          <!-- /.video -->
+
+          <div class="video-info">
+            <h3 class="video--title">{{ settings.video_1_title }}</h3>
+
+            <p class="video--desc">
+              {{ settings.video_1_dis }}
+            </p>
+            <!-- /.video--desc -->
+          </div>
+        </li>
+        {% endunless %}
+        
+        {% unless settings.video_2_url == blank %}
+      	<li tabindex="0" role="tabpanel" id="msnbc-live-tab" aria-labelledby="msnbc-live">
+          <div class="video">
+          	{{ settings.video_2_url }}
+          </div>
+          <!-- /.video -->
+
+          <div class="video-info">
+            <h3 class="video--title">{{ settings.video_1_title }}</h3>
+
+            <p class="video--desc">
+              {{ settings.video_2_dis }}
+            </p>
+            <!-- /.video--desc -->
+          </div>
+        </li>
+        {% endunless %}
+        
+        {% unless settings.video_3_url == blank %}
+      	<li tabindex="0" role="tabpanel" id="morning-joe-tab" aria-labelledby="morning-joe">
+          <div class="video">
+          	{{ settings.video_3_url }}
+          </div>
+          <!-- /.video -->
+
+          <div class="video-info">
+            <h3 class="video--title">{{ settings.video_3_title }}</h3>
+
+            <p class="video--desc">
+              {{ settings.video_3_dis }}
+            </p>
+            <!-- /.video--desc -->
+          </div>
+        </li>
+        {% endunless %}
+        
+       {% unless settings.video_4_url == blank %}
+      	<li tabindex="0" role="tabpanel" id="martha-stewart-show-tab" aria-labelledby="martha-stewart-show">
+          <div class="video">
+          	{{ settings.video_4_url }}
+          </div>
+          <!-- /.video -->
+
+          <div class="video-info">
+            <h3 class="video--title">{{ settings.video_4_title }}</h3>
+
+            <p class="video--desc">
+              {{ settings.video_4_dis }}
+            </p>
+            <!-- /.video--desc -->
+          </div>
+        </li>
+        {% endunless %} 
+        
+        {% unless settings.video_5_url == blank %}
+      	<li tabindex="0" role="tabpanel" id="food-channel-tab" aria-labelledby="food-channel">
+          <div class="video">
+          	{{ settings.video_5_url }}
+          </div>
+          <!-- /.video -->
+
+          <div class="video-info">
+            <h3 class="video--title">{{ settings.video_5_title }}</h3>
+
+            <p class="video--desc">
+              {{ settings.video_5_dis }}
+            </p>
+            <!-- /.video--desc -->
+          </div>
+        </li>
+        {% endunless %} 
+        
+      </ul>
+ 
+      <div class="video-info_lower">
+        <div class="sm">
+          <a href="https://www.facebook.com/mcclurespickles/" target="_blank" aria-label="Facebook"><div class="sm-icon"><i class="fa fa-facebook"></i></div></a>
+
+          <a href="https://www.instagram.com/mcclurespickles/?hl=en" target="_blank" aria-label="Instagram"><div class="sm-icon"><i class="fa fa-instagram"></i></div></a>
+
+          <a href="https://www.youtube.com/channel/UCcfiSDmzC1fQElqjEFKWSBA" target="_blank" aria-label="Youtube"><div class="sm-icon"><i class="fa fa-youtube"></i></div></a>
+        </div>
+        <!-- /.sm -->
+        <div class="bottom-btn"> <a href="https://www.youtube.com/channel/UCcfiSDmzC1fQElqjEFKWSBA" target="_blank" class="submit-a-recipe youtube-visit-btn" aria-label="VISIT US ON YOUTUBE">VISIT US ON YOUTUBE</a></div>
+      </div>
+      
+      
+
+      <!-- /.video-info -->
+    </div>
+    <!-- /.video-left -->
+
+    
+  </div>
+  <!-- /#lab--videos -->
+
+  <!--div id="lab--recipes">
+    <span class="sm-lab--subtitle">USER SUBMITTED</span>
+    <h2 class="sm-lab--title">recipes</h2>
+
+    <div style="background: url({{ 'recipes.png' | asset_url }}) no-repeat center center / cover; width: 100%; height: 211px;"></div> 
+
+    <div class="lab-user-recipe">
+      
+      <h2 class="user--title">Salmon BLTs with McClure’s Tartar Sauce</h2>
+      <!-- /.user--title 
+
+      <h3 class="user--subtitle">Lisa Wallace - Ferndale, MI</h3>
+      <!-- /.user--subtitle 
+
+      <p class="user--review">
+        BLT et McClure's
+      </p>
+      <!-- /.user--review 
+
+      <a href="{{ 'contact-us'.url }}/?id=1" class="submit-a-recipe">SUBMIT A RECIPE <i class="icon-filled-arrow-right"></i></a>
+	  
+      <a data-reveal-id="md-box_1" class="recipe-details">DETAILS <i class="icon-filled-arrow-right"></i></a>
+    </div>
+    <!-- /.lab-user-recipe 
+  </div>
+  <!-- /#lab--recipes -->
+
+
+  <div id="lab--results" style="display:none;">
+    <h4 class="sm-lab--subtitle">USER POLL</h4>
+    <h2 class="sm-lab--title">the results</h2>
+
+    <div class="star-border"></div>
+    <!-- /.star-border -->
+
+    <div class="results-winner">
+      <img src="{{ 'results-1.png' | asset_url }}">
+
+      <h4 class="lab--subtitle">garlic &amp; dill spears</h4>
+      <h2 class="lab--title"><span class="results-number" data-from="0" data-to="42">42</span>%</h2>
+    </div>
+    <!-- /.results-winner -->
+
+    <div class="results-other ro-space">
+      <img src="{{ 'results-2.png' | asset_url }}">
+
+      <h4 class="lab--subtitle">garlic &amp; dill spears</h4>
+      <h2 class="lab--title"><span class="results-number" data-from="0" data-to="27">42</span>%</h2>
+    </div>
+    <!-- /.results-other -->
+
+     <div class="results-other">
+      <img src="{{ 'results-2.png' | asset_url }}">
+
+      <h4 class="lab--subtitle">garlic &amp; dill spears</h4>
+      <h2 class="lab--title"><span class="results-number" data-from="0" data-to="18">42</span>%</h2>
+    </div>
+    <!-- /.results-other -->
+
+     <div class="results-other">
+      <img src="{{ 'results-2.png' | asset_url }}">
+
+      <h4 class="lab--subtitle">garlic &amp; dill spears</h4>
+      <h2 class="lab--title"><span class="results-number" data-from="0" data-to="13">42</span>%</h2>
+    </div>
+    <!-- /.results-other -->
+
+
+     <div class="results-desc">
+      <h2 class="lab--title">what’s the favorite flavors of 2019</h2>
+      <p class="dsec--subtitle">
+       </p>
+      <a href="#" aria-label="Facebook"><div class="sm-icon"><i class="fa fa-facebook"></i></div></a>
+     <a href="#" aria-label="Twitter"><div class="sm-icon"><i class="fa fa-twitter"></i></div></a>
+     </div>
+    <!-- /.results-dsec -->
+  </div>
+  <!-- /#lab--results -->
+
+
+   <div id="lab--poll" style="width: 100%; display: none;">
+      
+     
+      <h4 class="sm-lab--subtitle">USER POLL</h4>
+    <h2 class="sm-lab--title">the results</h2>
+
+    <div class="star-border"></div>
+     
+     
+      <div id="wufoo-z1acb9m1ob6af8" class="poll_form"></div>
+      <script type="text/javascript">var z1acb9m1ob6af8;(function(d, t) {
+      var s = d.createElement(t), options = {
+      'userName':'mcclures',
+      'formHash':'z1acb9m1ob6af8',
+      'autoResize':true,
+      'height':'332',
+      'async':true,
+      'host':'wufoo.com',
+      'header':'hide',
+      'ssl':true};
+      s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+      s.onload = s.onreadystatechange = function() {
+      var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+      try { z1acb9m1ob6af8 = new WufooForm();z1acb9m1ob6af8.initialize(options);z1acb9m1ob6af8.display(); } catch (e) {}};
+      var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+      })(document, 'script');</script>
+     
+
+     
+
+    <!-- /.lab-user-recipe -->
+  </div>
+  <!-- /#lab--recipes -->
+
+  <div id="lab--poll-full" style="display: none;">
+    <div class="lab--poll-img"></div>
+    <!-- /.poll-img -->
+
+    <div class="lab--poll-desc" style="padding-bottom: 60px;">
+      <h4 class="sm-lab--subtitle" style="margin-top: 82px!important;">Where do you usually look for </h4>
+      <h2 class="sm-lab--title">McClure’s or pickle products when shopping?</h2>
+
+      
+      <div id="wufoo-mghn78c13co3ab" class="poll_form">
+     
+      </div>
+      <script type="text/javascript">var mghn78c13co3ab;(function(d, t) {
+      var s = d.createElement(t), options = {
+      'userName':'mcclures',
+      'formHash':'mghn78c13co3ab',
+      'autoResize':true,
+      'height':'338',
+      'async':true,
+      'host':'wufoo.com',
+      'header':'show',
+      'ssl':true};
+      s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+      s.onload = s.onreadystatechange = function() {
+      var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+      try { mghn78c13co3ab = new WufooForm();mghn78c13co3ab.initialize(options);mghn78c13co3ab.display(); } catch (e) {}};
+      var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+      })(document, 'script');</script>
+
+            
+    </div>
+    <!-- /.lab--poll-desc -->
+  </div>
+  <!-- /#lab--poll-full -->
+
+<div class="clearfix"></div>
+
+
+<!-- model #1 -->
+<div id="md-box_1" class="reveal-modal recipe" data-reveal aria-labelledby="mcclure’s bloody mary gumbo" aria-hidden="true" role="dialog">
+  <div class="row">
+  	
+	<div class="large-4 columns">
+    	<img src="{{ 'the-lab-recipe.jpg' | asset_url }}" class="rep_img">
+    </div>
+    
+    <div class="large-8 columns">
+    	<h2 id="modalTitle">Salmon BLTs with McClure’s Tartar Sauce</h2>
+      	<div class="row set_steps"  data-equalizer data-equalizer-mq="large-up">
+      		<div class="large-6 columns panel" data-equalizer-watch>
+              <span class="title_block">ingredients</span>
+              <ul class="steps_block">
+                <li>4 Slices of Bacon</li>
+                <li>3/4 lb of Salmon (with skin removed)</li>
+                <li>3 Chives – chopped</li>
+                <li>1 McClure’s Garlic Dill Pickle – diced</li>
+                <li>1 Tbsp of McClure’s Garlic Dill Pickle Juice</li>
+                <li>3 Tbsp of Mayo</li>
+                <li>Garlic Salt</li>
+                <li>Pretzel Bread</li>
+                <li>Olive Oil</li>
+                <li>Spinach</li>
+                <li>Salt &amp; Pepper to taste</li>
+              </ul>
+          	</div>
+          	<div class="large-6 columns panel" data-equalizer-watch>
+              <span class="title_block">directions</span>
+              <ul class="steps_block">
+                <li>In a cast iron, or any other oven safe pan, fry the bacon until crisp. Discard all but a teaspoon of grease. Season the salmon with salt & pepper and fry on medium for 2 minutes in the bacon pan. Flip and fry on the other side for another 3 minutes. Transfer the pan into a 425˚ oven for another 3-5 minutes depending on the thickness. At the same time, on another rack in the oven, toast the pretzel loaf, cut in half and drizzled with olive oil, until golden. Assemble the sandwich. Spread McClure’s Tartar Sauce (recipe below) on one side of bread. Layer bacon, salmon & spinach to taste & enjoy!McClure’s Tartar SauceCombine mayo, chives, pickle and pickle juice in a small bowl. Season with garlic salt and pepper. Stir to combine.</li>
+              </ul>
+          	</div>
+      	</div>
+      
+        <div class="row cta_block">
+        <div class="large-3 columns ctaShare_block social">
+          <span class="ssd_link st_facebook_large"><i class=" fa fa-facebook"></i></span>
+          <span class="ssd_link st_twitter_large"><i class="fa fa-twitter"></i></span>
+          <a href="/pages/contact-us#recipe_submissions"><i class="fa fa-paper-plane"></i></a>
+        </div>
+        <div class="cta_btn submit large-4 large-offset-1 columns">
+            <a href="{{ 'contact-us'.url }}/?id=1" target="_top">submit your recipe <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <div class="cta_btn fd_close large-4 columns">
+            <a class="close-reveal-modal"><i class="fa fa-long-arrow-left" aria-hidden="true"></i> back to recipes</a>
+          </div>
+      </div>
+    </div>
+  
+  </div>
+</div>

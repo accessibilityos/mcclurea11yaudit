@@ -1,0 +1,41 @@
+header {background: #00000080;}
+#masthead.home {background: #00000080;}
+
+#masthead .video-controls { position: absolute; bottom: 30px; right: 30px;}
+#masthead .video-controls .play-pause-btn {height:40px;width:40px;background-size:100% !important;font-size:0;border: solid 1px #000; outline: none; border-radius: 50%;}
+#masthead .video-controls .play-pause-btn.pause {background:url('play_1.png') no-repeat center;}
+#masthead .video-controls .play-pause-btn.play {background:url('pause_1.png') no-repeat center;}
+
+#masthead .smal_title {
+  font-size: 1.5rem; color:#fff;font-family: DINWebBlack,"Helvetica Neue",Helvetica,Arial,sans-serif;text-transform: uppercase;
+  line-height: 1.4;
+  font-weight: 400;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  margin-top: .2rem;
+  margin-bottom: .5rem;
+  display:block;
+}
+
+#masthead iframe {padding:10px 0 20px 0;}
+#lab--recipes .sm-lab--subtitle {display:block;margin-bottom:10px;}
+
+#recipe-container .recipe .bg_color {background-color: #937049; padding: 30px 20px 20px 20px; margin: 0 0 20px 0;}
+#recipe-container .recipe .bg_color h2 {margin:0;}
+
+
+#masthead.recipe .top_bg {background-color: #C55337; max-width: 600px; margin: 0 auto; width: 100%; padding: 30px;}
+#masthead.culture .top_bg {background-color: #cac7b5cc; max-width: 600px; margin: 0 auto; width: 100%; padding: 30px;}
+
+
+.search_filters .search_filter input[type="checkbox"] {display:none;}
+.search_filters .search_filter label {pointer-events: none;}
+.hidden__text, #one-click-social-login-buttons-1{
+display:none;
+}
+
+
+#recipeForm iframe
+{	height:500px !important; width:100% !important;
+}
+

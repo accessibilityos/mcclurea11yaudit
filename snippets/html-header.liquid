@@ -1,0 +1,101 @@
+<header {% if has_header_mast == false %}class="no-mast"{% endif %}>
+    <a href="https://mcclures.com/#main-content" class="hidden__skip_text" style="color: #fff; background-color: #000;">skip to main content</a>         
+    <div id="hd-logo">
+      <div class="vac">
+      	<div class="va">
+         	
+              {% if settings.use_logo %}
+            {% unless template.name == 'index'%}
+              <a id="logo" href="/" at="{{ template.name }}">
+                {% endunless %}
+                {% if has_header_mast == false %}
+                <div class="logo">{{ 'mcp-logo.png' | asset_url | img_tag: "Brooklyn Detroit, McClure's Pickles" }}</div>
+                {% else %}
+                <div class="logo">{{ 'logo.png' | asset_url | img_tag: "Brooklyn Detroit, McClure's Pickles" }}</div>
+                {% endif %}
+                {% unless template.name == 'index'%}
+              </a>
+          {% endunless %}
+              {% else %}
+              <a id="site-title" href="/">
+                {{ shop.name }}
+              </a>
+              {% endif %}
+      	</div>
+      </div>
+   </div>
+  
+  
+  <nav id="hd-nav">  
+    
+    {% include 'hd-nav' %}
+    
+   </nav>
+   <div id="hd-nav-acc">
+       <ul class="small-block-grid-3 medium-block-grid-1 large-block-grid-2 ">
+         <li>
+           	
+           {% if customer %}
+          	
+            <a aria-label="account" href="/account">
+               <div class="vac">
+                  <div class="va">
+                     <i class="fa fa-user"></i>
+                     Account	
+                  </div>
+               </div>
+            </a>
+           
+           {% else %}
+           
+            <a aria-label="login" href="/account/login" >
+               <div class="vac"  >
+                  <div class="va">
+                     <i class="fa fa-user" aria-hidden="true"></i>
+                     Login
+                  </div>
+               </div>
+            </a>
+           
+          {% endif %}
+           
+           
+         </li>
+         <li id="header-cart">
+            <a href="/cart" aria-label="Cart {{ cart.item_count }} Items" title="Cart-Items" rel="link">
+              <div class="vac">
+                  <div class="va">
+                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <span>{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'item', 'items' }} 
+                  </div>
+               </div>
+            </a>
+         </li>
+         <li class="mob-nav-menu"   id="list_items_nav">
+            <a href="#">
+               <div class="vac">
+                  <div class="va">
+                     <i class="fa fa-bars" aria-hidden="true"></i>Menu
+                  </div>
+               </div>
+            </a>
+         </li>
+       </ul>
+   </div>
+  
+  {% if template == 'index' %}
+  {% endif %}
+
+ </header>
+
+<nav style="" class="mobile-nav">
+      <button href="#" class="mobile-nav-close" aria-label="mobile-close-navigation"><i class="fa fa-times"></i></button>
+	
+  	
+    <ul id="nav" class="center-content">
+      {% for link in linklists.main-menu.links %}
+      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+      <li><a href="/pages/contact-us" style="">CONTACT</a></li>
+    </ul>
+  </nav>  

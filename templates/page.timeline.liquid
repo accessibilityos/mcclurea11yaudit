@@ -1,0 +1,274 @@
+{% assign has_header_mast = false %}
+
+{% include 'html-user-nav' %}
+
+<style>
+.row#timeline-1 img {
+  opacity: 0;
+}
+#timeline-1 #main {
+  	width:100%;
+  	opacity: 1!important;
+}
+#bridges {
+	margin-top: 180px;
+}
+#lady {
+	margin-top: 100px; 
+}
+#born {
+    margin-top: 320px;
+}
+#ford {
+    margin-top: 100px;
+}
+#detroit {
+	margin-top: 50px;
+}
+#down {
+	margin-top: 450px;
+}
+#motown {
+	margin-top: 80px;
+}
+#together {
+	margin-top: 120px;
+}
+#york {
+	margin-top: 80px;
+}
+#helping {
+	margin-top: 60px;
+}
+#tigers {
+	margin-top: 100px;
+}
+#winning {
+	margin-top: 150px;
+}
+#tripping {
+	margin-top: 280px;
+} 
+#family {
+	margin-top: 50px;
+} 
+#super {
+	margin-top: 115px;
+} 
+#every {
+	margin-top: 60px;
+} 
+#best {
+	margin-top: 150px;
+} 
+#dill {
+	margin-top: 50px;
+} 
+#dream {
+	margin-top: 220px;
+} 
+#saturday {
+	margin-top: 100px;
+} 
+#growing {
+	margin-top: 115px;
+} 
+.hint--medium:after {
+  font-family: "DINWebBlack", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 300px;
+  background: #f5efe9;
+  text-shadow: none!important;
+  color: #000000;
+  font-size: 16px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1)!important;
+  width: 100%;
+}
+.gold.hint--medium:after {
+  border: 2px solid #CD9700;
+}
+.blue.hint--medium:after {
+  border: 2px solid #0D757A;
+}
+.black.hint--medium:after {
+  border: 2px solid #3E3935;
+}
+.red.hint--medium:after {
+  border: 2px solid #D7652E;
+}
+.legend {
+    top: 50%;
+    left: 48%;
+    margin-top: -50px;
+    width: 250px;
+    margin-left: -100px; 
+}
+</style>
+
+<div class="row" id="timeline-1">
+	<div class="small-6 medium-4 columns">
+      <span class="hint--bottom hint--medium hint--bounce black" aria-label="The Brooklyn Bridge connects the boroughs of Manhattan and Brooklyn by spanning the East River. First over the bridge - 21 elephants in order to demonstrate its sturdiness to skeptics.">
+        <img id="bridges" class="animated" src="{{ '1883.png' | asset_url }}" alt="1883, Building Bridges">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce black" aria-label="The Statue of Liberty is given to the US as a gift from France in celebration of 100 years since the signing of the Declaration of Independence.">
+       <img id="lady" class="animated" src="{{ '1886.png' | asset_url }}" alt="1886, Lady Liberty">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce red" aria-label="In 1903 Ford Motor Company is founded by Henry Ford in Detroit.">
+  	   <img id="ford" class="animated" src="{{ '1903.png' | asset_url }}" alt="1903, Ford Founds Ford">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce red" aria-label="In 1930 citizens of Detroit are free to travel to Canada on the US’ first underground country-to-country tunnel.">
+  	   <img id="detroit" class="animated" src="{{ '1930.png' | asset_url }}" alt="1930, Detroit Windsor Tunnel Is Complete">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce red" aria-label="Motown Records had 110 top 10 hits from artists including the Supremes, the Jackson 5 and Stevie Wonder - the Motown sound becomes synonymous with the city.">
+	   <img id="motown" class="animated" src="{{ '1961.png' | asset_url }}" alt="1961, Motown Sound">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce black" aria-label="The I Love New York tourism campaign takes the hearts and minds of tourists and New York natives alike, simultaneously becoming the official unofficial state motto.">
+       <img id="york" class="animated" src="{{ '1977.png' | asset_url }}" alt="1977, We Love New York">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce red" aria-label="The Detroit Tigers won the 1984 World Series, defeating the San Diego Padres in five games.">
+       <img id="tigers" class="animated" src="{{ '1984.png' | asset_url }}" alt="1984, The Tigers Eat 'Em Up">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce black" aria-label="The New York Yankees win the 1996 World Series, and go on to win it again, again, and again. ">
+       <img id="winning" class="animated" src="{{ '1996.png' | asset_url }}" alt="1996, 1998, 1999, 2000, Winning Streak">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce red" aria-label="In February of 2006 Detroit hosts Super Bowl XL between the Pittsburgh Steelers and the Seattle Seahawks.">
+       <img id="super" class="animated" src="{{ '2006Left.png' | asset_url }}" alt="2006, Super Bowl XL">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce black" aria-label="Times Square celebrates the dropping of its 100th ball on New Years Eve since the dropping of the ball began in 1907. Nearly a million people attended, and millions more watched on TV.">
+       <img id="every" class="animated" src="{{ '2007.png' | asset_url }}" alt="2007, New Years Every Year">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce red" aria-label="The world’s largest one-day automotive event marks its 20th year. Every August nearly a million people come to watch classic hot rods, muscle cars and low riders loop up and down Woodward Avenue, the nation’s first mile of concrete highway. ">
+ 	   <img id="dream" class="animated" src="{{ '2014.png' | asset_url }}" alt="2014, The Dream Cruise Keeps Cruising">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce black" aria-label="Popular late-night comedy sketch show Saturday Night Live celebrates its 40th season of broadcasting live from New York.">
+       <img id="saturday" class="animated" src="{{ '2015Left.png' | asset_url }}" alt="2015, Saturday Night Lives On">
+      </span>
+  	</div>
+  	<div class="hide-for-small medium-4 columns">
+    	<img id="main" src="{{ 'MCP-timeline-vertical.png' | asset_url }}" alt="McClure's Pickles Timeline">
+  	</div>
+  	<div class="small-6 medium-4 columns">
+      <img class="animated legend hide-for-small" src="{{ 'timeline_2.png' | asset_url }}" alt="Legend" style="opacity: 1!important; position: fixed;">
+      <span class="hint--bottom hint--medium hint--bounce gold" aria-label="Great Grand Momma Lala is born in 1899 and shows an interest in cooking early on. A friend introduces her to pickling and she makes a spicy pickle – at the request of her heat-loving husband – every summer until their daughter is old enough to lend a hand.">
+         <img id="born" class="animated" src="{{ '1899.png' | asset_url }}" alt="1889, A Pickle Is Born">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce gold" aria-label="In 1954 Jennifer Pearce is born in the suburbs of Detroit where she learns how to make the recipe from Lala. Together they make a more kid-friendly garlic dill. ">
+  	   <img id="down" class="animated" src="{{ '1954.png' | asset_url }}" alt="1954, Pickle Gets Passed Down">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce gold" aria-label="Jenny marries Mike McClure in 1973, and Mike learns the ins and outs of the now secret recipes. Jenny and Mike make a point of making them each summer for friends and family. And they don’t stop asking for them.">
+	   <img id="together" class="animated" src="{{ '1973.png' | asset_url }}" alt="1973, The Great Get Together">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce gold" aria-label="Jenny and Mike get a few extra hands around the house with Bob, born in 1978 and Joe in 1981. It will be a few years until they can get their hands around the lid, but by now it’s safe to say it’s in their blood.">
+  	   <img id="helping" class="animated" src="{{ '1978.png' | asset_url }}" alt="1978 & 1981, Helping Hands">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce blue" aria-label="Joe stays in Detroit and Bob takes the biz to Brooklyn in 2003. They shop around for specialty food stores to sell their specialty food product. ">
+       <img id="tripping" class="animated" src="{{ '2003.png' | asset_url }}" alt="2003, Business Tripping">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce blue" aria-label="The brothers decide to make the family tradition the family business, and in 2006 McClure’s Pickles is born. They had no business background. They had no manufacturing experience. And they knew nothing about food production. But they were hungry. ">
+       <img id="family" class="animated" src="{{ '2006.png' | asset_url }}" alt="2006, Family Business">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce blue" aria-label="In 2009 the brothers get a favorable review in the New York Times. One thing leads to another and they end up in a feature called The Best Thing I Ever Ate on The Food Network.">
+       <img id="best" class="animated" src="{{ '2009.png' | asset_url }}" alt="2009, The Best Thing Someone Ever Ate">
+      </span>
+      <span class="hint--bottom hint--medium hint--bounce blue" aria-label="In 2012 McClure’s moves into a 20,000 sq. ft. factory in Detroit. Production expands to include relishes, kettle cooked chips and the coveted bloody mary mix. ">
+       <img id="dill" class="animated" src="{{ '2012.png' | asset_url }}" alt="2012, Kind Of A Bigger Dill">
+      </span>
+       <span class="hint--bottom hint--medium hint--bounce blue" aria-label="Everything we make we believe can make what you’re eating better – and it’s only getting better from here.">
+       	  <img id="growing" class="animated" src="{{ '2015Right.png' | asset_url }}" alt="2015, Growing Growing">
+       </span>
+  	</div>
+  
+</div>
+
+
+ <script>
+  
+$(document).ready(function(){
+   
+  $('#bridges').waypoint(function() {
+      $('#bridges').addClass('fadeInLeft');
+    $('#main').addClass('fadeInRight');
+  }, { offset: '50%' });
+  
+  $('#lady').waypoint(function() {
+      $('#lady').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#born').waypoint(function() {
+      $('#born').addClass('fadeInRight');
+  }, { offset: '50%' });
+  
+  $('#ford').waypoint(function() {
+      $('#ford').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#detroit').waypoint(function() {
+      $('#detroit').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#down').waypoint(function() {
+      $('#down').addClass('fadeInRight');
+  }, { offset: '50%' });
+  
+  $('#motown').waypoint(function() {
+      $('#motown').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#together').waypoint(function() {
+      $('#together').addClass('fadeInRight');
+  }, { offset: '50%' });
+  
+  $('#york').waypoint(function() {
+      $('#york').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#helping').waypoint(function() {
+      $('#helping').addClass('fadeInRight');
+  }, { offset: '50%' });
+  
+  $('#tigers').waypoint(function() {
+      $('#tigers').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#winning').waypoint(function() {
+      $('#winning').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#tripping').waypoint(function() {
+      $('#tripping').addClass('fadeInRight');
+  }, { offset: '50%' });
+  
+  $('#family').waypoint(function() {
+      $('#family').addClass('fadeInRight');
+  }, { offset: '50%' });
+  
+  $('#super').waypoint(function() {
+      $('#super').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#every').waypoint(function() {
+      $('#every').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#best').waypoint(function() {
+      $('#best').addClass('fadeInRight');
+  }, { offset: '50%' });
+  
+  $('#dill').waypoint(function() {
+      $('#dill').addClass('fadeInRight');
+  }, { offset: '50%' });
+  
+  $('#dream').waypoint(function() {
+      $('#dream').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#saturday').waypoint(function() {
+      $('#saturday').addClass('fadeInLeft');
+  }, { offset: '50%' });
+  
+  $('#growing').waypoint(function() {
+      $('#growing').addClass('fadeInRight');
+  }, { offset: '50%' });
+ 
+});
+  
+</script>

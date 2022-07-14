@@ -1,0 +1,72 @@
+<!-- Footer -->
+  <footer>
+   <div class="clearfix">  
+      <div id="ft-bm">
+        <div class="caption"><div class="vac"><div class="va"><h2>Phone</h2></div></div></div>
+        <div class="info"><div class="vac"><div class="va">
+            <div class="contac_f"><a href="tel:+1-888-784-8434" target="_top" aria-label="phone:{{ settings.contact_phone }}">{{ settings.contact_phone }}</a></div>
+            </div></div></div>
+          <div class="caption"><div class="vac"><div class="va"><h2>Email</h2></div></div></div>
+          <div class="info"><div class="vac"><div class="va"><div class="contac_f"><a href="mailto:{{ settings.contact_email }}" target="_top" aria-label="Email:{{ settings.contact_email }}">{{ settings.contact_email }}</a></div></div></div></div>
+          <div><div class="vac"><div class="va"><h2><a href="/pages/contact-us" aria-label="Contact Information">Contact Information</a></h2></div></div></div> 
+      </div>   
+      <div id="ft-good">
+         <div class="vac">
+         	<div class="va">
+               <img src="{{ 'ico-goodness.png' | asset_url }}" alt="Let's make something great">
+         	</div>
+         </div>   
+      </div>
+      <div id="ft-social">
+         <ul class="small-block-grid-3">
+           <li id="Facebook"><div class="vac"><div class="va"><a href="{{ settings.facebook_url }}" target="_blank" title="Facebook" aria-label="Facebook" aria-labelledby="Facebook" role="link" description="Facebook" name="Facebook" value="Facebook" tab-navigation="21"><i class="fa fa-facebook-square"></i><span class="hidden__text">Facebook icon</span></a></div></div></li>
+           <li id="Twitter"><div class="vac"><div class="va"><a href="{{ settings.twitter_url }}" target="_blank" title="Twitter" aria-label="Twitter" aria-labelledby="Twitter" role="link" description="Twitter" name="Twitter" value="Twitter" tab-navigation="22"><i class="fa fa-twitter-square"></i><span class="hidden__text">Twitter icon</span></a></div></div></li>
+           <li id="Instagram"><div class="vac"><div class="va"><a href="{{ settings.instagram_url }}" target="_blank" title="Instagram" aria-label="Instagram" aria-labelledby="Instagram" role="link" description="Instagram" value="Instagram" name="Instagram" tab-navigation="23"><i class="fa fa-instagram"></i><span class="hidden__text">Instagram icon</span></a></div></div></li>
+         </ul>
+      </div> 
+   </div>
+   
+   <hr class="double">
+   
+   <div id="post-footer">
+     <div class="last_footer_f"><ul><li>Copyright © McClure’s pickles, LLC. All rights reserved. </li>
+        
+        
+        
+       
+  	{% for link in linklists.footer-links.links %}
+    
+       <li><span>|</span></li>
+	   <li><a href="{{ link.url }}">
+            {{ link.title }}
+         </a>
+       </li>
+        
+    {% endfor %}
+       </ul>
+   </div>
+     <div class="row">
+       <div class="small-12 medium-6 large-4 columns small-centered">
+         <ul class="small-block-grid-5">
+           <li><i class="fa fa-cc-amex" role="img" aria-label="AMEX"></i></li>
+           <li><i class="fa fa-cc-visa" role="img" aria-label="VISA"></i></li>
+           <li><i class="fa fa-cc-discover" role="img" aria-label="DISCOVER"></i></li>
+           <li><i class="fa fa-cc-mastercard" role="img" aria-label="MASTERCARD"></i></li>
+           <li><i class="fa fa-cc-paypal" role="img" aria-label="PAYPAL"></i></li>
+         </ul>
+       </div>
+     </div>
+   </div>
+    
+  </footer>
+
+<!--[if lt IE 8]>
+	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+<style>
+.last_footer_f li
+  {
+    font-size:12px !important;
+    display:inline;
+  }
+</style>

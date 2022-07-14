@@ -1,0 +1,79 @@
+{% assign has_header_mast = false %}
+{% include 'html-product-header' %}
+<style>
+  header {
+    border-bottom: 1px solid black;
+  }
+  .grid a {
+    display: block;
+    text-align: center;
+  }
+  .grid li img {
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  .grid li h4 {
+    font-size: 18px;
+  }
+  #the_goods_subnav{background: #bd9d4b; margin-bottom: 0px;border-bottom: #24201d solid 1px;}
+  #cart-subnav{display: none;}
+</style>
+<div class="row">
+  <div class="small-12 columns">
+	<h1 class="text-center" style="margin: 50px 0;">{{ collection.title }}</h1>
+    
+    <div class="row">
+      <div class="small-12 medium-10 large-6 columns medium-centered">
+        {% if collection.description.size > 0 %}
+        <div class="rte clearfix text-center" style="margin-bottom: 60px">
+          {{ collection.description }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <ul class="grid clearfix small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+    {% for product in collection.products %}
+        <li>
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: "large"}}" alt="{{ product.title }}">
+            <h2 class="collection-title">{{ product.title }}</h2>
+            <h3 class="collection-price">{{ product.price | money}}</h3>
+          </a>
+    {% endfor %}
+    </ul>
+    
+    {% if paginate.pages > 1 %}
+    <div class="pagination centered">
+      {{ paginate | default_pagination }}
+    </div>
+    {% endif %}
+    
+  </div>
+</div>
+<style>
+  .collection-title
+  {
+    font-size:18px;
+    font-family: "DINWebBlack", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    line-height: 1.4;
+    font-weight: normal;
+    font-style: normal;
+    color: #222222;
+    text-rendering: optimizeLegibility;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+  }
+ .collection-price
+  {
+    font-weight: normal !important;
+    font-style: normal;
+    color: #222222;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+    font-family: "DINWebBlack", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }

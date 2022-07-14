@@ -1,0 +1,22 @@
+#container, html.embed {background: transparent !important}
+
+.wufoo .info {display:none;}
+label.desc, legend.desc {display:none}
+
+
+.wufoo li div {margin-bottom: 40px;}
+.wufoo input#saveForm {
+    background: #fff !important;
+    border: none !important;
+    padding: 9px !important;
+    color: #000;
+    width: 100%;
+    display: block;
+    max-width: 220px;
+  	font-weight:700;
+}
+.wufoo a {opacity:0;}
+.wufoo label.choice {font-size: 130% !important; color:#e25b41}
+form ul {
+    max-width: 440px;
+}

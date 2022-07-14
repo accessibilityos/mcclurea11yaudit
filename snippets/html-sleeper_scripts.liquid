@@ -1,0 +1,23 @@
+{% if template contains 'product' %}
+{{ 'product_linked_options.js'  | asset_url | script_tag }}
+
+{% elsif template == 'page.social' %}
+{{ 'isotope.pkgd.js'  | asset_url | script_tag }}
+
+{% elsif template == 'page.culture' %}
+<script>
+  $(document).ready(function(){
+    $("#cart-subnav").sticky({topSpacing:0});
+    
+    $('#cart-subnav .va a').click(function(){
+      $('html, body').animate({
+        scrollTop: $( $(this).attr('href') ).offset().top - 100 }, 700);
+      return false;
+    });
+  });
+</script>
+
+{% elsif template == 'page.labs' %}
+{% comment %} Labs page {% endcomment %}
+{{ 'vimeo_froogaloop2.js'  | asset_url | script_tag }}
+{% endif %}

@@ -1,0 +1,120 @@
+{% assign has_header_mast = false %}
+{% assign add_to_cart = 'Add to cart' %}
+{% assign sold_out = 'Sold Out' %}
+{% assign unavailable = 'Unavailable' %}
+<ul id="the_goods_subnav" class="small-block-grid-3 medium-block-grid-4 large-block-grid-8 clearfix product-page {{product_page}}">
+   
+ <li>
+      <a href="/products/chips">
+      <div class="vac">
+      	<div class="va">
+      	  Pickle Flavored<br>Potato Chips
+        </div>
+      </div>
+      </a>
+      <span class="the_goods_bubble"><img alt="Pickle Flavored Potato Chips" src="{{ 'potato-chips-stripe-thumb.jpg' | asset_url }}"></span>
+    </li>
+  
+  <li>
+      <a href="/products/pickles">
+      <div class="vac">
+      	<div class="va">
+        	Pickles
+        </div>
+      </div>
+      </a>
+      <span class="the_goods_bubble"><img alt="Pickles" src="{{ 'mini_pickels.jpg' | asset_url }}"></span>
+      
+    </li>
+    <li>
+      <a href="/products/bloody-mary-mix">
+      <div class="vac">
+      	<div class="va">
+      	  Bloody<br/>mary mix
+        </div>
+      </div>
+      </a>
+      <span class="the_goods_bubble"><img alt="Bloody mary mix" src="{{ 'mini_bloody.jpg' | asset_url }}"></span>
+    </li>
+       <li>
+      <a href="/products/sauerkraut">
+      <div class="vac">
+      	<div class="va">
+      	  Sauerkraut
+        </div>
+      </div>
+      </a>
+      <span class="the_goods_bubble"><img alt="Sauerkraut" src="{{ 'mini_kraut.jpg' | asset_url }}"></span>
+    </li>
+  
+   {% comment %}
+  <li>
+      <a href="#">
+      <div class="vac">
+      	<div class="va">
+         Ready to Drink<br />Bloody Mary
+        </div>
+      </div>
+      </a>
+      <span class="the_goods_bubble"><img alt="Ready to Drink Bloody Mary" src="{{ 'mini-rtd-bloody-mary.jpg' | asset_url }}"></span>
+    </li>
+  {% endcomment %}
+
+   <li>
+      <a href="/products/relish">
+      <div class="vac">
+      	<div class="va">
+      	  Relish
+        </div>
+      </div>
+      </a>
+      <span class="the_goods_bubble"><img alt="Relish" src="{{ 'mini_relish.jpg' | asset_url }}"></span>
+    </li>
+ 
+    <li>
+      <a href="/products/combo-pack">
+      <div class="vac">
+      	<div class="va">
+      	  Combo Packs
+        </div>
+      </div>
+      </a>
+      <span class="the_goods_bubble"><img alt="Combo Packs" src="{{ 'mini_combo.jpg' | asset_url }}"></span>
+    </li>
+   
+  
+  
+    <li>
+      <a href="/collections/apparel">
+      <div class="vac">
+      	<div class="va">
+          Apparel &<br />Non-edibles
+        </div>
+      </div>
+      </a>
+      <span class="the_goods_bubble"><img alt="Apparel & Non-edibles" src="{{ 'mini_shirt.jpg' | asset_url }}"></span>
+    </li>
+ 
+   
+  </ul>
+
+<meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+<meta itemprop="image" content="{{ product | img_url: 'grande' }}" />
+
+<div class="clearfix"></div>
+  <div id="cart-subnav">
+     <div class="row">
+        <div class="small-12 columns small-centered">
+           <div class="vac">
+              <div class="va">
+                  <p>
+                  <a href="#" class="scroll_to" data-inline_link="order">Order</a> - 
+                  <a href="#" class="scroll_to" data-inline_link="pdct_gallery">Gallery</a><span> - </span>  
+                  <a href="#" class="scroll_to" data-inline_link="pdct_details">details</a><span> - </span> 
+                  <a href="#" class="scroll_to" data-inline_link="ft-cta"> Retailers</a>
+                </p>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>  

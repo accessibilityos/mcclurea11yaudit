@@ -1,0 +1,19 @@
+#container, html.embed {background: transparent !important}
+  
+label.desc, legend.desc {font-size:20px !important; color:#000 !important; margin-bottom:30px; text-align:center; }
+
+.wufoo li div { margin-left: 30px; margin-bottom: 40px;}
+.wufoo input#saveForm {
+    background: #000 !important;
+    border: none !important;
+    padding: 9px !important;
+    color: #fff;
+    width: 100%;
+    display: block;
+}
+.wufoo a {opacity:0;}
+.wufoo label.choice {font-size: 130% !important;}
+form ul {
+    max-width: 440px;
+    margin: 0 auto;
+}

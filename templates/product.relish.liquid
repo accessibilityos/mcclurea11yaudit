@@ -1,0 +1,133 @@
+{% assign variants_type = 'single' %}
+{% comment %}Single: will make variant drop downs 100% / double: will make them 50%{% endcomment %}
+
+{% include 'html-product-header' %}
+
+<hr class="double">
+
+<div class="product" itemscope itemtype="http://schema.org/Product">
+  
+  {% include 'html-product-top' %}
+  
+  <style>
+  #the_goods_subnav{background: #28a699; margin-bottom: 0px}
+  </style>
+
+  <div id="pdct_details" class="large-5 columns">
+   <ul id="lightSlider" >
+    <li>
+      <img src="{{ 'product_relish_slider_2.png' | asset_url }}" alt="Spicy Relish">
+      <h2 class="title_block"><img style="width:65px" src="{{ 'SpicyPepper.png' | asset_url }}" class="type_icon" alt="Spicy Relish Icon">Spicy Relish</h2>
+        <p>Bold and spicy, this relish, like our pickles, packs a punch but will compliment a sandwich like you've never heard the word mustard before.</p>
+    </li>
+    <li>
+        <img src="{{ 'product_relish_slider_1.png' | asset_url }}" alt="Garlic Dill Relish">
+        <h2 class="title_block"><img src="{{ 'garlic-flavor-icon.png' | asset_url }}" class="type_icon" alt="Garlic Dill Relish Icon">Garlic Dill Relish</h2>
+        <p>Mixed up with scrambled eggs you'll have a tasty, tangy, fresh and fantastic breakfast. Like our garlic dills this relish is truly something to...relish.</p>
+    </li>
+    
+
+   </ul>
+  </div>
+  
+  <hr class="double">
+   
+  <div id="ft-cta" class="products clearfix">
+    <div class="row">
+        <div class="vac">
+          <div class="va">
+            <h3>don’t need a whole case?</h3>
+             <h4>McClure's products are found at premium grocery and food stores throughout the country and internationally and can help you complete your McClure's experience!</h4>
+            <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-5 ">
+              <li><a href="http://www.murrayscheese.com/" target="_blank">Murray’s<br> Cheese</a></li>
+              <li><a href="http://www.kroger.com" target="_blank">Kroger</a></li>
+              <li><a href="http://www.worldmarket.com" target="_blank">Cost Plus</a></li>
+              <li><a href="http://www.thefreshmarket.com" target="_blank">The Fresh Market</a></li>
+              <li><a href="http://www.meijer.com" target="_blank">Meijer</a></li>
+            </ul>
+             <div>&nbsp;</div>
+            <h3>Grocer Request Form</h3>
+            <h4><a href="https://cdn.shopify.com/s/files/1/0930/6380/t/2/assets/Grocer_Request_Form_McClures.pdf" target="_blank">Download PDF &raquo Print &raquo Take to your Grocery</a></h4>
+          </div>
+        </div>
+    </div>
+  </div>
+  
+
+</div><!--#product -->
+
+
+{% comment %}
+  Adding support for product options.
+{% endcomment %}
+
+<script>
+  
+var selectCallback = function(variant, selector) {
+
+  if (variant) {
+    
+    // Swap image.
+    if (variant.featured_image) {
+      var newImage = variant.featured_image; // New image object.
+      var mainImageDomEl = jQuery('.product-photo-container img')[0]; // DOM element of main image we need to swap.
+      Shopify.Image.switchImage(newImage, mainImageDomEl, switchImage); // Define switchImage (the callback) in your theme's JavaScript file.
+    }
+    
+    // Selected a valid variant that is available.
+    if (variant.available) {
+          
+      // Enabling add to cart button.
+      jQuery('#add').removeClass('disabled').prop('disabled', false).val({{ add_to_cart | json }});
+    
+      // If item is backordered yet can still be ordered, we'll show special message.
+      if (variant.inventory_management && variant.inventory_quantity <= 0) {
+        jQuery('#selected-variant').html({{ product.title | json }}{% unless hide_default_title %} + ' - ' + variant.title{% endunless %});
+        jQuery('#backorder').removeClass("hidden");
+      } else {
+        jQuery('#backorder').addClass("hidden");
+      }
+      
+    } else {
+      // Variant is sold out.
+      jQuery('#backorder').addClass('hidden');
+      jQuery('#add').val({{ sold_out | json }}).addClass('disabled').prop('disabled', true);       
+    }
+    
+    // Whether the variant is in stock or not, we can update the price and compare at price.
+    if ( variant.compare_at_price > variant.price ) {
+      jQuery('#product-price').html('<span class="product-price on-sale">'+ Shopify.formatMoney(variant.price, "{{ shop.money_format }}") +'</span>'+'&nbsp;<s class="product-compare-price">'+Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}")+ '</s>');
+    } else {
+      jQuery('#product-price').html('<span class="product-price">'+ Shopify.formatMoney(variant.price, "{{ shop.money_format }}") + '</span>' );
+    }        
+
+  } else {
+    // variant doesn't exist.
+    var message = '<span class="product-price">Sorry item is unavailable</span>';
+	jQuery('#product-price').html(message);
+    jQuery('#backorder').addClass('hidden');
+    jQuery('#add').val({{ unavailable | json }}).addClass('disabled').prop('disabled', true);
+  }
+
+};
+  
+jQuery(function($) {
+
+  new Shopify.OptionSelectors('product-select', { product: {{ product | json }}, onVariantSelected: selectCallback, enableHistoryState: true });
+  
+  {% if product.available and product.options.size > 1 %}
+  Shopify.linkOptionSelectors({{ product | json }});
+  {% endif %}
+  
+  
+  // Add label if only one product option and it isn't 'Title'.
+  {% if product.options.size == 1 and product.options.first != 'Title' %}
+    $('.selector-wrapper:eq(0)').prepend('<label for="product-select-option-0">{{ product.options.first }}</label>');
+  {% endif %}
+
+});
+
+Shopify.Image.preload({{ product.images | json }}, 'grande');
+Shopify.Image.preload({{ product.images | json }}, '1024x1024');
+          
+</script>

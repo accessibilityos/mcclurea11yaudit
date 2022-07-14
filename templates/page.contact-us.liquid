@@ -1,0 +1,249 @@
+<div id="masthead" class="contact">  
+    <div class="vac ">
+       <div class="va">
+         <img src="{{ 'con-city.png' | asset_url }}" alt="">
+         <h1>Contact</h1>
+         <img src="{{ 'keepintouch.png' | asset_url }}" alt="McClure's Pickle's Keep In Touch!">
+        
+       </div>
+    </div>
+  </div>
+
+
+<div id="social-follow">
+     <div class="row">
+        <div class="small-12 medium-8 columns small-centered">
+           <div class="vac">
+              <div class="va">
+                <p class="ssn_txt_links"><a href="{{ settings.twitter_url }}">Twitter</a> <span>-</span> <a href="{{ settings.facebook_url }}"> Facebook</a> <span>-</span> <a href="{{ settings.instagram_url }}" target="_blank"> Instagram</a></p>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+  
+  <hr class="double">
+
+<style>
+  .select-contact-dropdown:focus, #contactFormName:focus, #contactFormEmail:focus, #contactFormTelephone:focus, #contactFormMessage:focus
+  {
+    border:2px solid #BE4625;
+    outline:5px;
+  }
+  #contactFormName, #contactFormEmail, #contactFormTelephone {
+   	display: block; 
+  	width: 100%;
+    margin-top: 20px;
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    color: #22221F;
+    font-size: 1.125rem;
+    font-family: "DINWebMedium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  #contactFormMessage {
+    margin-top: 20px;
+    padding: 15px 20px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #22221F;
+    font-size: 1.125rem;
+    font-family: "DINWebMedium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  #contactFormSubmit {
+    width: 100%;
+    border-radius: none;
+    border: none;
+    color:#FAF2F9;
+    padding: 20px;
+    background: #cd3b1f;
+    font-size: 1.125rem;
+    font-family: "DINWebMedium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  .select-contact-dropdown {
+   	height: 48px;
+    border: none;
+    padding-left: 20px; 
+    color: #22221F;
+    font-size: 1.125rem;
+    font-family: "DINWebMedium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    outline: none;
+  }
+  .supernova .form-all, .form-all {
+        background-color: #F5EFE5!important;
+  }
+  #re-captcha {
+    margin-bottom: 15px;
+}
+</style>
+  
+  <!-- Contact Information -->
+  <div id="contact-container">
+     <div class="row">
+      <div class="small-11 medium-6 columns small-centered medium-uncentered">
+         <h2>Phone/fax</h2>
+         <ul>
+            
+           <li>
+               <h3><span>customer service phone number</span>(888) 784-8434</h3>
+            </li>
+           <li>
+             <h3><span>marketing inquiries</span>(888) 784-8434</h3>
+            </li>
+            <li>
+               <h3><span>calling from outside the US?</span>(248) 837-9323</h3>
+            </li>
+            <li>
+               <h3><span>fax number</span>(866) 796-9679</h3>
+            </li>
+         </ul>
+      </div>
+      <div class="small-11 medium-6 columns small-centered medium-uncentered ">
+         <h2>E-Mail</h2>
+        {% form 'contact' %}
+              {% if form.posted_successfully? %}
+                <div class="successForm feedback" role="alert" >
+                	<p>Thank you for contacting us. We will get back to you soon.</p>
+                </div>
+              {% endif %}
+
+              {% if form.errors %}
+                <div class="errorForm feedback" role="alert">
+                  <p>Please check your message and try again.</p>
+                </div>
+              {% endif %}
+
+        		<div id="contactFormWrapper">
+                  <select class="select-contact-dropdown" id="category" name="contact[Working at McClure's]" aria-label="Category">
+                    <option value="0">Please Select</option>  
+                    <option value="Working at McClure's">Working at McClure's</option>
+                      <option value="An order I placed on our site">An order I placed on our site</option>
+                      <option value="Wholesale ">Wholesale</option>
+                      <option value="General questions about our company, products, etc">General questions about our company, products, etc</option>
+                      <option value="Recipe submissions">Recipe submissions</option>
+                      <option value="Charitable Giving">Charitable Giving</option>
+                  </select>
+
+                  <div id="contactMain">
+                    <input type="text" id="contactFormName" name="contact[name]" placeholder="NAME" aria-label="Name" />
+                    <input type="email" id="contactFormEmail" name="contact[email]" placeholder="EMAIL" aria-label="Email" />
+                    <input type="telephone" id="contactFormTelephone" name="contact[phone]" placeholder="PHONE" aria-label="Phone" />
+                    <textarea rows="10" id="contactFormMessage" name="contact[body]" placeholder="MESSAGE" aria-label="Message"></textarea>
+
+                    <div id="re-captcha"></div>
+                    <input type="submit" id="contactFormSubmit" value="Submit" class="btn" aria-label="Submit"  />
+
+                  </div>
+        </div>
+        {% endform %}
+        
+        <div id="recipeForm" style="display: none; margin-top: 20px;">
+        <script type="text/javascript" src="https://form.jotform.com/jsform/61078623443152"></script>
+        </div>
+        
+         
+      </div>
+     </div>  
+</div>
+<!--script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+<script>
+  var actCallback = function (response) {
+    $('#contactFormSubmit').prop("disabled", false);
+    $('#re-captcha').remove();
+  };
+  var expCallback = function() {
+    $('#contactFormSubmit').prop("disabled", true);
+  };
+ 
+  var onloadCallback = function () {
+    var widget = grecaptcha.render(document.getElementById("re-captcha"), {
+      'sitekey' : "6LdG4qkUAAAAAK-AdE0ZwVXw_J-fsmW-vtuBZvXt",
+      'theme': "light",
+      'callback' : actCallback,
+      'expired-callback': expCallback,
+    });
+  }
+</script -->
+
+<script>
+  $(document).ready(function () {
+    function getQueryVariable(variable) {
+           var query = window.location.search.substring(1);
+           var vars = query.split("&");
+           for (var i=0;i<vars.length;i++) {
+                   var pair = vars[i].split("=");
+                   if(pair[0] == variable){return pair[1];}
+           }
+           return(false);
+    }
+    if(getQueryVariable("id") == 1) {
+      document.getElementById("category").selectedIndex = 4;
+      toggleFields();
+    } else if(getQueryVariable("id") == 2) {
+      document.getElementById("category").selectedIndex = 2;
+      toggleFields();
+    }
+    
+    toggleFields();
+    $(".select-contact-dropdown").change(function () {
+        toggleFields();
+    });
+
+  });
+  function toggleFields() {
+    if ($(".select-contact-dropdown").val() == "Recipe submissions") {
+      	$("#contactMain").hide();
+        $("#recipeForm").show();
+    }
+    else {
+     	$("#contactMain").show();
+        $("#recipeForm").hide(); 
+    }
+}
+</script>
+    
+  <div id="ft-cta" class="products clearfix">
+    <div class="row">
+        <div class="vac">
+          <div class="va">
+            {% comment %}
+          <h4><a href="https://mcclures.com/pages/charity">Learn about M<font style="font-size: 88%">c</font>Clure's Charitable Giving</a></h4>
+           
+            <hr />
+            
+            <div>&nbsp;</div>
+      {% endcomment %}
+            <h3 class="contact-footer-heading">Our products are found at premium grocery and food stores throughout the country and internationally as well as online retailers and can help you complete your McClure's experience!</h3>
+            <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-6 ">
+              <li><a href="http://www.murrayscheese.com/" target="_blank">Murray’s<br> Cheese</a></li>
+              <li><a href="http://www.kroger.com" target="_blank">Kroger</a></li>
+              <li><a href="http://www.worldmarket.com" target="_blank">Cost Plus</a></li>
+              <li><a href="http://www.wholefoods.com" target="_blank">Whole Foods Market</a></li>
+              <li><a href="http://www.thefreshmarket.com" target="_blank">The Fresh Market</a></li>
+              <li><a href="http://www.meijer.com" target="_blank">Meijer</a></li>
+            </ul>
+             <div>&nbsp;</div>
+          
+            <h4><a href="https://cdn.shopify.com/s/files/1/0930/6380/t/2/assets/McClures_Pickles_Grocer_Request_Form.pdf" target="_blank">Download Grocer Request Form &raquo Take to your Grocery</a></h4>
+          </div>
+        </div>
+    </div>
+  </div>
+<!--<a<ul>
+            <li>
+               <h5><span>General Questions</span><a href="mailto:info@mcclures.com">info@mcclures.com</a></h5>
+            </li>
+            <li>
+               <h5><span>Questions about orders placed on our website </span><a href="mailto:picklehelp@mcclurespickles.com">picklehelp@mcclurespickles.com</a></h5>
+            </li>
+            <li>
+               <h5><span>Retail/Distributor Sales E-mail Address</span><a href="mailto:sales@mcclurespickles.com">sales@mcclurespickles.com</a></h5>
+            </li>
+            <li>
+               <h5><span>Sponsorship and Donation Requests</span><a href="mailto:mcclurespickles.hellosponsor.com">mcclurespickles.hellosponsor.com</a></h5>
+            </li>
+            <li>
+               <h5 id="recipe_submissions"><span>RECIPE SUBMISSIONS</span><a href="mailto:recipes@mcclurespickles.com">recipes@mcclurespickles.com</a></h5>
+            </li>
+         </ul>-->

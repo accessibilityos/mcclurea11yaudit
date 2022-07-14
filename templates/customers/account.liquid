@@ -1,0 +1,59 @@
+{% assign has_header_mast = false %}
+
+{% include 'html-user-nav' %}
+
+<div id="blank_page" class="row" >
+
+
+<h1 id="page_title" class="large-12 columns">Your Orders</h1>
+
+
+  
+{% layout settings.customer_layout %}
+
+ 
+<div id="customer_orders"  class="large-12 columns ">
+  {% if customer.orders.size != 0 %}
+
+      <ul class="row header">
+        <li class="large-2 small-4 columns order_number">Order</li>
+        <li class="large-2 small-4 columns date">Date</li>
+        <li class="large-2 small-4 columns payment_status">Payment Status</li>
+        <li class="large-3 small-4 columns fulfillment_status">Fulfillment Status</li>
+        <li class="large-2 small-4 columns total">Total</li>
+        <li class="large-1 small-4 columns">View</li>
+      </ul>
+
+      {% for order in customer.orders %}
+      <ul class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %} row order_item">
+        <li class="large-2 small-4 columns">{{ order.name | link_to: order.customer_url }}</li>
+        <li class="large-2 small-4 columns"><span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span></li>
+        <li class="large-2 small-4 columns"><span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span></li>
+        <li class="large-3 small-4 columns"><span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span></li>
+        <li class="large-2 small-4 columns"><span class="total money">{{ order.total_price | money }}</span></li>
+        <li class="large-1 small-4 columns">{{ 'View' | link_to: order.customer_url }}</li>
+      </ul>
+      {% endfor %}
+
+  {% else %}
+    <p>You haven't placed any orders yet.</p>
+  {% endif %}
+</div>
+ 
+  
+
+
+<div id="customer_sidebar" class="large-12 columns ">
+	<a id="view_address" href="/account/addresses">View Saved Addresses ({{ customer.addresses_count }})</a>
+  <p>{% render 'paywhirl-customer-portal-link' %}</p>
+</div>
+
+
+  
+  
+  
+</div>
+
+
+{% render 'paywhirl-customer-portal-frame' %}
+

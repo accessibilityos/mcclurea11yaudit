@@ -1,0 +1,116 @@
+<div id="order" class="row top_dis_block">
+  <form action="/cart/add" method="post" enctype="multipart/form-data">
+    <div class="large-6 columns left_detial">
+    <div class="inner"> 
+      <h1 itemprop="name">{{ product.title }}</h1>
+      
+      <div id="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="delta">
+        <!-- Leave blank -->
+      </div>
+     
+      <div id="product-description" class="rte" itemprop="description">
+        <hr class="double">
+        <div class="text_block pro_a_link">
+        {{ product.description }}
+        </div>
+        <hr class="double">
+      </div>
+      
+      <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+      
+      {% assign hide_default_title = false %}
+      {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+        {% assign hide_default_title = true %}
+      {% endif %}       
+
+      <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %} {{ variants_type | escape }} clearfix">
+        <select id="product-select" name="id">
+        {% for variant in product.variants %}
+          <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
+          {{ variant.title }} - {{ variant.price | money }}
+          </option>
+        {% endfor %}
+        </select>
+      </div>        
+       {% render 'paywhirl-plan-selector', product: product %}
+      <div class="social">
+        <a target="_blank" href="http://www.facebook.com/sharer.php?t={{ product.title }}&u=https://mcclures.com{{ product.url }}" title="Facebook" aria-label="Facebook" aria-labelledby="Facebook" role="link" description="Facebook" name="Facebook" value="Facebook"><span class='st_facebook_large fa fa-facebook '  displayText='Facebook'><span class="hidden_text">Facebook</span></span></a>
+        <a target="_blank" href="http://twitter.com/share?text=McClure's - {{ product.title }}&url=https://mcclures.com{{ product.url }}" title="Twitter" aria-label="Twitter" aria-labelledby="Twitter" role="link" description="Twitter" name="Twitter" value="Twitter"><span class='st_twitter_large fa fa-twitter hidden_text' displayText='Tweet'><span class="hidden_text">Twitter</span></span></a>
+        
+      </div>
+        
+      <div id="product-add">
+        <input type="submit" name="add" id="add" class="primary button add_to_cart" value="{{ add_to_cart | escape }}">
+      </div>
+      
+      <div class="clearfix"></div>
+      
+      
+      <div id="notes" >
+        {% if template == 'product.olives-tapenade' %}
+        <p id="backorder" class="hidden">{{ 'Ships in 12 (9oz) units via ground FedEx or UPS. We cannot currently ship to AK, HI, VI, PR, Canada or International at this time but we bet there is a retailer nearby! Visit our retailers page if you live outside the contiguous United States. - See more at: http://mcclures-pickles.myshopify.com/products/olives-tapenade#sthash.ktsFjoBJ.dpuf' | replace: '%s', '<span id="selected-variant"></span>' }}</p>
+        {% elsif  template == 'product.chips' %}
+        <p id="backorder" class="hidden">{{ 'Depending on item & size, this item ships in 12 or 24 (1.5, 2.5, or 7.5oz) units via ground FedEx or UPS. We cannot currently ship to AK, HI, VI, PR, Canada or International at this time but we bet there is a retailer nearby! Visit our retailers page if you live outside the contiguous United States.' | replace: '%s', '<span id="selected-variant"></span>' }}</p>
+        {% elsif  template == 'product.party-pack' %}
+        <p id="backorder" class="hidden">{{ 'This item ships in 1 case with 5-6 McClure&apos;s items' | replace: '%s', '<span id="selected-variant"></span>' }}</p>
+        {% elsif  template == 'product.apparel ' %}
+        <p id="backorder" class="hidden">{{ 'This item ships in either 1 unit or combined to accommodate the most effective shipping choice.  We cannot currently ship to AK, HI, VI, PR, Canada or International at this time but we bet there is a retailer nearby! Visit our retailers page if you live outside the contiguous United States.' | replace: '%s', '<span id="selected-variant"></span>' }}</p>
+        {% else %}
+        {% else %}
+        <p id="backorder" class="hidden">{{ 'This item ships in cases of either 12 (9oz) units or 4 (9oz) units via ground FedEx or UPS. We cannot currently ship to AK, HI, VI, PR, Canada or International at this time but we bet there is a retailer nearby! Visit our retailers page if you live outside the contiguous United States.' | replace: '%s', '<span id="selected-variant"></span>' }}</p>
+        {% endif %}
+         
+      </div> 
+      </div><!-- .inner -->
+      
+      {% if collection %}
+      {% if collection.previous_product or collection.next_product %}
+      <div>     
+        {% if collection.previous_product %}
+        {% capture prev_url %}{{ collection.previous_product}}#content{% endcapture %}
+        <span class="left">{{ '&larr; Previous Product' | link_to: prev_url }}</span>
+        {% endif %}
+        {% if collection.next_product %}
+        {% capture next_url %}{{ collection.next_product}}#content{% endcapture %}
+        <span class="right">{{ 'Next Product &rarr;' | link_to: next_url }}</span>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endif %}  
+    </div><!-- .left_detial -->
+    
+    <div class="large-6 columns">
+      
+     {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+    <div class="product-photo-container">
+      <img src="{{ featured_image | img_url: 'grande' }}" alt="{{ product.title | escape }}" />
+    </div>
+      
+      
+    </div><!-- .product-photos -->
+    
+    
+    
+	
+    
+    
+    
+  </form>
+  </div><!-- .order -->
+
+  {% if template != 'product.apparel ' %}
+  <div id="pdct_gallery" class="product_gallery clearfix">  
+	{% if product.images.size > 1 %}
+		{% for image in product.images offset:1 limit:3 %}
+            <div class="gallery_item large-4 columns ">  
+                <img src="{{ image | img_url: 'large' }}" alt="{{ image.alt | escape }}" />
+            </div>
+        {% endfor %}
+ 	{% endif %}
+  </div>
+{% endif %}
+<style>
+  .hidden_text{
+  display:none;
+  }
+</style>
